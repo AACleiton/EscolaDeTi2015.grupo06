@@ -14,7 +14,7 @@ public class ItemDeAcesso implements Serializable{
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
     
-    private String descricao;
+    private String nome;
     
     @OneToOne
     private ItemDeAcesso superior;
@@ -22,31 +22,32 @@ public class ItemDeAcesso implements Serializable{
     public ItemDeAcesso() {
     }
 
-    public ItemDeAcesso(Long id, String descricao, ItemDeAcesso superior) {
-        this.id = id;
-        this.descricao = descricao;
+    public ItemDeAcesso(String descricao, ItemDeAcesso superior) {
+        
+        this.nome = descricao;
         this.superior = superior;
     }
 
-    public ItemDeAcesso(Long id, String descricao) {
-        this.id = id;
-        this.descricao = descricao;
+    public ItemDeAcesso(String descricao) {
+        
+        this.nome = descricao;
+        this.superior = this;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getNome() {
+        return nome;
     }
 
     public ItemDeAcesso getSuperior() {
         return superior;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public void setSuperior(ItemDeAcesso superior) {
@@ -77,7 +78,7 @@ public class ItemDeAcesso implements Serializable{
 
     @Override
     public String toString() {
-        return "ItemDeAcesso{" + "id=" + id + ", descricao=" + descricao + ", superior=" + superior + '}';
+        return "ItemDeAcesso{" + "id=" + id + ", descricao=" + nome + ", superior=" + superior + '}';
     }
     
     
