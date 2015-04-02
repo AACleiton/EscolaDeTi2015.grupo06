@@ -20,19 +20,18 @@ public class ItemDeAcessoService {
     private NamedParameterJdbcTemplate template;
     
     
-    
     public void salvarItem(ItemDeAcesso i){
         persistence.save(i);
     }
     
     public List<Map<String, Object>> recuperarPorSQL(String nome){
         List<Map<String, Object>> busca;
-        final MapSqlParameterSource params = new MapSqlParameterSource();
-        params.addValue("nome", nome);
+        final MapSqlParameterSource parametros = new MapSqlParameterSource();
+        parametros.addValue("nome", nome);
         busca = template.query(
                 "select i.nome "
                 + "from itemDeAcesso i "
-                + "where i.nome = nome", params, new MapRowMapper());
+                + "where i.nome = :nome", parametros, new MapRowMapper());
         return busca;
     }
     

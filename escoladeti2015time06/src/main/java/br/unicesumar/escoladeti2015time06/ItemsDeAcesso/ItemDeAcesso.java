@@ -20,6 +20,7 @@ public class ItemDeAcesso implements Serializable{
     private ItemDeAcesso superior;
 
     public ItemDeAcesso() {
+        
     }
 
     public ItemDeAcesso(String descricao, ItemDeAcesso superior) {

@@ -14,7 +14,7 @@ public class MapRowMapper implements RowMapper<Map<String, Object>> {
 
     @Override
     public Map<String, Object> mapRow(ResultSet rs, int rowNum) throws SQLException {
-        /*Map<String, Object> retorno;
+        Map<String, Object> retorno;
         retorno = new HashMap<>();
         try {
             final ResultSetMetaData metaData = rs.getMetaData();
@@ -25,8 +25,8 @@ public class MapRowMapper implements RowMapper<Map<String, Object>> {
         } catch (Exception e) {
             e.printStackTrace();;
         }
-        return retorno;*/
-        return null;
+        return retorno;
+
     }
     
 }
