@@ -1,6 +1,7 @@
 package br.unicesumar.escoladeti2015time06.ItemsDeAcesso;
 
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,8 +71,8 @@ public class ItemDeAcessoController {
     }
 
     @RequestMapping(value = "/buscanome/{nome}", method = RequestMethod.GET)
-    public void buscarItemPorNome(@PathVariable String nome){
-        service.recuperarPorSQL(nome);
+    public List<Map<String, Object>> buscarItemPorNome(@PathVariable String nome){
+        return service.recuperarPorSQL(nome);
     }
 
 }

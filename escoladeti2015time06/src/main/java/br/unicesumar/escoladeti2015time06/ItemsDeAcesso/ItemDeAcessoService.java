@@ -1,6 +1,6 @@
 package br.unicesumar.escoladeti2015time06.ItemsDeAcesso;
 
-import MapRowMapper.MapRowMapper;
+import br.unicesumar.escoladeti2015time06.MapRowMapper;
 import java.util.List;
 import java.util.Map;
 import javax.transaction.Transactional;
@@ -26,12 +26,10 @@ public class ItemDeAcessoService {
     
     public List<Map<String, Object>> recuperarPorSQL(String nome){
         List<Map<String, Object>> busca;
-        final MapSqlParameterSource parametros = new MapSqlParameterSource();
-        parametros.addValue("nome", nome);
+        MapSqlParameterSource parametros = new MapSqlParameterSource();
+        parametros.addValue("nomeBusca", nome);
         busca = template.query(
-                "select i.nome "
-                + "from itemDeAcesso i "
-                + "where i.nome = :nome", parametros, new MapRowMapper());
+                "select nome from itemdeacesso where nome = :nomeBusca", parametros, new MapRowMapper());
         return busca;
     }
     
