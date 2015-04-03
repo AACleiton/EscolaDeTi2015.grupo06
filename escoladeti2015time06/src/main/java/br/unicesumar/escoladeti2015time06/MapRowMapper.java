@@ -1,4 +1,4 @@
-package MapRowMapper;
+package br.unicesumar.escoladeti2015time06;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;

@@ -6,8 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "itemdeacesso")
 public class ItemDeAcesso implements Serializable{
     
     @Id
@@ -24,7 +26,6 @@ public class ItemDeAcesso implements Serializable{
     }
 
     public ItemDeAcesso(String descricao, ItemDeAcesso superior) {
-        
         this.nome = descricao;
         this.superior = superior;
     }

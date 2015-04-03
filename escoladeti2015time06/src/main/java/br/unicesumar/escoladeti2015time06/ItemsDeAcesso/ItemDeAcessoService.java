@@ -1,6 +1,6 @@
 package br.unicesumar.escoladeti2015time06.ItemsDeAcesso;
 
-import MapRowMapper.MapRowMapper;
+import br.unicesumar.escoladeti2015time06.MapRowMapper;
 import java.util.List;
 import java.util.Map;
 import javax.transaction.Transactional;
@@ -14,29 +14,27 @@ import org.springframework.stereotype.Component;
 public class ItemDeAcessoService {
     
     @Autowired
-    private ItemDeAcessoRepository persistence;
+    private ItemDeAcessoRepository itemDeAcessoRepo;
     
     @Autowired
-    private NamedParameterJdbcTemplate template;
+    private NamedParameterJdbcTemplate jdbcTemplate;
     
     
     public void salvarItem(ItemDeAcesso i){
-        persistence.save(i);
+        itemDeAcessoRepo.save(i);
     }
     
     public List<Map<String, Object>> recuperarPorSQL(String nome){
         List<Map<String, Object>> busca;
-        final MapSqlParameterSource parametros = new MapSqlParameterSource();
-        parametros.addValue("nome", nome);
-        busca = template.query(
-                "select i.nome "
-                + "from itemDeAcesso i "
-                + "where i.nome = :nome", parametros, new MapRowMapper());
+        MapSqlParameterSource parametros = new MapSqlParameterSource();
+        parametros.addValue("nomeBusca", nome);
+        busca = jdbcTemplate.query(
+                "select nome from itemdeacesso where nome = :nomeBusca", parametros, new MapRowMapper());
         return busca;
     }
     
     public List<ItemDeAcesso> recuperarItens(){
-        return persistence.findAll();
+        return itemDeAcessoRepo.findAll();
     }
     
     
