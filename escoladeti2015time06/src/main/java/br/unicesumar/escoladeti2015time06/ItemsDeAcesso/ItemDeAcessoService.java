@@ -32,8 +32,11 @@ public class ItemDeAcessoService {
         return busca;
     }
 
-    public List<ItemDeAcesso> recuperarItens() {
-        return itemDeAcessoRepo.findAll();
+    public List<Map<String, Object>> recuperarItens() {
+        List<Map<String, Object>> busca;
+        busca = jdbcTemplate.query(
+                "select id, nome from itemdeacesso", new MapRowMapper());
+        return busca;
     }
 
 }

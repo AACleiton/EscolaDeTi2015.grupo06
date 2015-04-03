@@ -67,14 +67,15 @@ public class ItemDeAcessoController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<ItemDeAcesso> getAll() {
+    public List<Map<String, Object>> getItens() {
         return service.recuperarItens();
     }
 
     @RequestMapping(value = "/buscanome/{nome}", method = RequestMethod.GET)
-    public List<Map<String, Object>> getByName(@PathVariable String nome) {
+    public List<Map<String, Object>> buscarItemPorNome(@PathVariable String nome) {
         return service.recuperarItemsPorNome(nome);
     }
 }
+
 
 
