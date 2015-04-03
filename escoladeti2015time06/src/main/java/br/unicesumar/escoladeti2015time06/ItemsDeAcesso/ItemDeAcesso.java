@@ -1,4 +1,4 @@
-package br.unicesumar.escoladeti2015time06.ItemsDeAcesso;
+    package br.unicesumar.escoladeti2015time06.ItemsDeAcesso;
 
 import java.io.Serializable;
 import javax.persistence.Entity;

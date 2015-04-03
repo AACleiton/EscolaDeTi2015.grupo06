@@ -17,7 +17,7 @@ public class ItemDeAcessoService {
     private ItemDeAcessoRepository itemDeAcessoRepo;
     
     @Autowired
-    private NamedParameterJdbcTemplate template;
+    private NamedParameterJdbcTemplate jdbcTemplate;
     
     
     public void salvarItem(ItemDeAcesso i){
@@ -28,7 +28,7 @@ public class ItemDeAcessoService {
         List<Map<String, Object>> busca;
         MapSqlParameterSource parametros = new MapSqlParameterSource();
         parametros.addValue("nomeBusca", nome);
-        busca = template.query(
+        busca = jdbcTemplate.query(
                 "select nome from itemdeacesso where nome = :nomeBusca", parametros, new MapRowMapper());
         return busca;
     }
