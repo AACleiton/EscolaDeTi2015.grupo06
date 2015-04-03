@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 894192687b11a6eb769a2ab75dd28c29751bc0ce
 @RestController
 @Transactional
 @RequestMapping("/itemdeacesso/")
@@ -75,7 +79,11 @@ public class ItemDeAcessoController {
     }
 
     @RequestMapping(value = "/buscanome/{nome}", method = RequestMethod.GET)
+<<<<<<< HEAD
         public List<Map<String, Object>> buscarItemPorNome(@PathVariable String nome) {
+=======
+    public List<Map<String, Object>> buscarItemPorNome(@PathVariable String nome){
+>>>>>>> 894192687b11a6eb769a2ab75dd28c29751bc0ce
         return service.recuperarPorSQL(nome);
     }
 }

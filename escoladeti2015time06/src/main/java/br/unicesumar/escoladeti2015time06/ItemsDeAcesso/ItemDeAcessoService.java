@@ -28,7 +28,11 @@ public class ItemDeAcessoService {
         List<Map<String, Object>> busca;
         MapSqlParameterSource parametros = new MapSqlParameterSource();
         parametros.addValue("nomeBusca", nome);
+<<<<<<< HEAD
         busca = jdbcTemplate.query(
+=======
+        busca = template.query(
+>>>>>>> 894192687b11a6eb769a2ab75dd28c29751bc0ce
                 "select nome from itemdeacesso where nome = :nomeBusca", parametros, new MapRowMapper());
         return busca;
     }
