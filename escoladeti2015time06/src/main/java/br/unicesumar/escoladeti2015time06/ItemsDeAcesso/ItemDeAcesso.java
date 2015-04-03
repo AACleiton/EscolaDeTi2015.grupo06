@@ -10,19 +10,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "itemdeacesso")
-public class ItemDeAcesso implements Serializable{
-    
+public class ItemDeAcesso implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
-    
+
     private String nome;
-    
+
     @OneToOne
     private ItemDeAcesso superior;
 
     public ItemDeAcesso() {
-        
+
     }
 
     public ItemDeAcesso(String descricao, ItemDeAcesso superior) {
@@ -31,7 +31,6 @@ public class ItemDeAcesso implements Serializable{
     }
 
     public ItemDeAcesso(String descricao) {
-        
         this.nome = descricao;
         this.superior = this;
     }
@@ -82,7 +81,5 @@ public class ItemDeAcesso implements Serializable{
     public String toString() {
         return "ItemDeAcesso{" + "id=" + id + ", descricao=" + nome + ", superior=" + superior + '}';
     }
-    
-    
-    
+
 }

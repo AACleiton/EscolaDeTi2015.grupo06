@@ -12,34 +12,29 @@ import org.springframework.stereotype.Component;
 @Component
 @Transactional
 public class ItemDeAcessoService {
-    
+
     @Autowired
     private ItemDeAcessoRepository itemDeAcessoRepo;
-    
+
     @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
-    
-    
-    public void salvarItem(ItemDeAcesso i){
+
+    public void salvarItem(ItemDeAcesso i) {
         itemDeAcessoRepo.save(i);
     }
-    
-    public List<Map<String, Object>> recuperarPorSQL(String nome){
+
+    public List<Map<String, Object>> recuperarItemsPorNome(String nome) {
         List<Map<String, Object>> busca;
         MapSqlParameterSource parametros = new MapSqlParameterSource();
         parametros.addValue("nomeBusca", nome);
-<<<<<<< HEAD
         busca = jdbcTemplate.query(
-=======
-        busca = template.query(
->>>>>>> 894192687b11a6eb769a2ab75dd28c29751bc0ce
                 "select nome from itemdeacesso where nome = :nomeBusca", parametros, new MapRowMapper());
         return busca;
     }
-    
-    public List<ItemDeAcesso> recuperarItens(){
+
+    public List<ItemDeAcesso> recuperarItens() {
         return itemDeAcessoRepo.findAll();
     }
-    
-    
+
 }
+
