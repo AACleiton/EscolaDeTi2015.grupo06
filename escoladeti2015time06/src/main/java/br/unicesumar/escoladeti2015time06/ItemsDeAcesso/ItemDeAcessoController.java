@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Transactional
-@RequestMapping("/itemdeacesso/")
+@RequestMapping("/itemdeacesso")
 public class ItemDeAcessoController {
 
     @Autowired
