@@ -26,7 +26,6 @@ public class ItemDeAcesso implements Serializable{
     }
 
     public ItemDeAcesso(String descricao, ItemDeAcesso superior) {
-        
         this.nome = descricao;
         this.superior = superior;
     }

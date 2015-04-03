@@ -14,14 +14,14 @@ import org.springframework.stereotype.Component;
 public class ItemDeAcessoService {
     
     @Autowired
-    private ItemDeAcessoRepository persistence;
+    private ItemDeAcessoRepository itemDeAcessoRepo;
     
     @Autowired
     private NamedParameterJdbcTemplate template;
     
     
     public void salvarItem(ItemDeAcesso i){
-        persistence.save(i);
+        itemDeAcessoRepo.save(i);
     }
     
     public List<Map<String, Object>> recuperarPorSQL(String nome){
@@ -34,7 +34,7 @@ public class ItemDeAcessoService {
     }
     
     public List<ItemDeAcesso> recuperarItens(){
-        return persistence.findAll();
+        return itemDeAcessoRepo.findAll();
     }
     
     

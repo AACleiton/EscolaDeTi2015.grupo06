@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@Transactional
+
 @RestController
-@RequestMapping("rest/itemdeacesso/")
+@Transactional
+@RequestMapping("/itemdeacesso/")
 public class ItemDeAcessoController {
 
     @Autowired
