@@ -26,8 +26,8 @@ public class PerfilDeAcessoController {
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public void salvarNovoPerfil(@RequestBody PerfilDeAcesso p){
-        service.salvarNovoPerfil(p);
+    public void salvarNovoPerfil(@RequestBody CriarPerfilCommand perfil){
+        service.executar(perfil);
     }
     
     @RequestMapping(method = RequestMethod.PUT)

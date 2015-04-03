@@ -18,29 +18,29 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "perfildeacesso")
 public class PerfilDeAcesso {
-    
+
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Id
     private Long id;
-    
+
     @Column(nullable = false, unique = true)
     private String nome;
-    
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "itemnoperfil", 
+            name = "itemnoperfil",
             joinColumns = {
-                @JoinColumn( name = " perfildeacesso_id", referencedColumnName = "id")},
+                @JoinColumn(name = " perfildeacesso_id", referencedColumnName = "id")},
             inverseJoinColumns = {
-                @JoinColumn(name = "itemdeacesso_id",referencedColumnName = "id" )})
+                @JoinColumn(name = "itemdeacesso_id", referencedColumnName = "id")})
     private Set<ItemDeAcesso> itens = new HashSet<>();
 
     public PerfilDeAcesso() {
     }
 
-    public PerfilDeAcesso(Long id, String nome) {
-        this.id = id;
+    public PerfilDeAcesso(String nome, Set<ItemDeAcesso> itens) {
         this.nome = nome;
+        this.itens = itens;
     }
 
     public Long getId() {
@@ -54,11 +54,19 @@ public class PerfilDeAcesso {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
+    public Set<ItemDeAcesso> getItens() {
+        return itens;
+    }
+
+    public void setItens(Set<ItemDeAcesso> itens) {
+        this.itens = itens;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.id);
+        int hash = 5;
+        hash = 17 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -79,7 +87,7 @@ public class PerfilDeAcesso {
 
     @Override
     public String toString() {
-        return "PerfilDeAcesso{" + "id=" + id + ", nome=" + nome + '}';
+        return "PerfilDeAcesso{" + "id=" + id + ", nome=" + nome + ", itens=" + itens + '}';
     }
-    
+
 }
