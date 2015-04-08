@@ -16,16 +16,14 @@ import org.springframework.stereotype.Component;
 @Component
 @Transactional
 public class PerfilDeAcessoService {
-    
+
     @Autowired
     private PerfilDeAcessoRepository perfilDeAcessoRepo;
-    
     @Autowired
     private ItemDeAcessoRepository itemDeAcessoRepo;
-    
     @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
-    
+
     public List<Map<String, Object>> getAll() {
         List<Map<String, Object>> perfis = jdbcTemplate.query(
                 "select p.id,"
@@ -33,38 +31,39 @@ public class PerfilDeAcessoService {
                 + "from perfildeacesso p", new MapSqlParameterSource(), new MapRowMapper());
         return perfis;
     }
-    
+
     public List<Map<String, Object>> getByName(String nome) {
         List<Map<String, Object>> busca;
         MapSqlParameterSource parametros = new MapSqlParameterSource();
         parametros.addValue("nomeBusca", nome);
         busca = jdbcTemplate.query(
                 "select nome from perfildeacesso where nome =:nomeBusca", parametros, new MapRowMapper());
-        
+
         return busca;
-        
+
     }
-    
+
     public void salvarNovoPerfil(PerfilDeAcesso p) {
         perfilDeAcessoRepo.save(p);
     }
-    
+
     public void editarPerfil(PerfilDeAcesso p) {
         perfilDeAcessoRepo.save(p);
     }
-    
+
     public void deletarPerfil(Long id) {
         perfilDeAcessoRepo.delete(id);
     }
-    
+
     public void executar(CriarPerfilCommand comando) {
-        Set<ItemDeAcesso> itens = new HashSet<>();
         
-        for (Long idItem : comando.getIdItens()) {
-            itens.add(itemDeAcessoRepo.findOne(idItem));
-        }
-        PerfilDeAcesso perfilDeAcesso = new PerfilDeAcesso(comando.getNome(), itens );
-       
+        Set<ItemDeAcesso> itens = new HashSet<>();
+
+       for(Long id : comando.getIdItens()) {
+           itens.add(itemDeAcessoRepo.findOne(id));
+       }
+        
+       PerfilDeAcesso perfil = new PerfilDeAcesso(comando.getNome(), itens);
+       perfilDeAcessoRepo.save(perfil);
     }
-    
 }
