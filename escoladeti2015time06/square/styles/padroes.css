@@ -1,0 +1,23 @@
+.btn-xs .glyphicon-remove {
+	top: 2px !important;
+}
+.table-botoes-center {
+	text-align: center;
+}
+.page > .panel-dark {
+	border-color: #eee;
+	/*border: none;*/
+}
+
+.table .btn-gap-v {
+	margin: 0;
+}
+
+.table>thead>tr>th, 
+.table>thead>tr>td, 
+.table>tbody>tr>th, 
+.table>tbody>tr>td, 
+.table>tfoot>tr>th, 
+.table>tfoot>tr>td {
+	vertical-align: middle;
+}
