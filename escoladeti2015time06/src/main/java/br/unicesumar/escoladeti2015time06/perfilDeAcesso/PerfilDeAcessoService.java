@@ -26,8 +26,8 @@ public class PerfilDeAcessoService {
 
     public List<Map<String, Object>> getAll() {
         List<Map<String, Object>> perfis = jdbcTemplate.query(
-                "select p.id,"
-                + "p.nome"
+                "select p.id, "
+                + "p.nome "
                 + "from perfildeacesso p", new MapSqlParameterSource(), new MapRowMapper());
         return perfis;
     }
