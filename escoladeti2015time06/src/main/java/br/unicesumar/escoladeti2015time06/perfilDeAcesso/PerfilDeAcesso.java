@@ -28,7 +28,7 @@ public class PerfilDeAcesso {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "itemnoperfil",
+            name = "perfildeacesso_itemdeacesso",
             joinColumns = {
                 @JoinColumn(name = " perfildeacesso_id", referencedColumnName = "id")},
             inverseJoinColumns = {
